@@ -11,5 +11,3 @@ export class BookComponent  {
   @Input()
   book?: Book;
 }
-
-// ng g c book
