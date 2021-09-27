@@ -10,14 +10,14 @@
     </div>
     <p>{{ book.description }}</p>
 
-    <!---
-    TODO! ACHTUNG! ANTI-PATTERNS
+    <button
+      class="btn btn-secondary"
+      (click)="doRateDown()"
+    >-1</button>
 
-    1. Objekte werden mutiert
-    2. Single Responsibility Principle
-    3. Logik im HTML
-    -->
-    <button class="btn btn-secondary" (click)="book.rating = book.rating - 1">-1</button>
-    <button class="btn btn-primary ml-2" (click)="book.rating = book.rating + 1">+1</button>
+    <button
+      class="btn btn-primary ml-2"
+      (click)="doRateUp()"
+    >+1</button>
   </div>
 </div>
