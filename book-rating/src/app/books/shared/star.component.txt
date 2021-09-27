@@ -1,0 +1,47 @@
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Input } from '@angular/core';
+import { Book } from '../shared/book';
+
+@Component({
+  selector: 'br-stars',
+  templateUrl: './stars.component.html',
+  styleUrls: ['./stars.component.scss']
+})
+export class StarsComponent implements OnChanges {
+
+  numberOfStars: number = 1;
+
+  // 1. Möglichkeit --- Lifecycle Hooks (nicht von Johannes empfohlen)
+  @Input() rating: number = 1;
+
+  // geht nicht, feuert nur einmal zum Start
+  ngOnInit(): void {
+  }
+
+  // funktioniert, feuert bei jedem neuen Wert über JEDES Input()
+  ngOnChanges(changes: SimpleChanges) {
+    const r = changes.rating.currentValue;
+    if (r > 0 && r < 6) {
+      this.numberOfStars = r
+    }
+  }
+
+  // -----------------
+
+  // 2. Möglichkeit --- Getter / Setter Properties
+
+  _rating: number = 0;
+
+  @Input() set rating2(r: number) {
+    if (r > 0 && r < 6) {
+      this._rating =  r;
+    }
+  }
+
+  get rating2() {
+    return this._rating;
+  }
+
+  constructor() { }
+  }
+}
