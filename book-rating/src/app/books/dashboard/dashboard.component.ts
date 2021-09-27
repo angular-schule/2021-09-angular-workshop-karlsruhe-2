@@ -27,7 +27,7 @@ export class DashboardComponent {
     rating: 2
   }];
 
-  constructor(private br: BookRatingService) {}
+  constructor(public br: BookRatingService) {}
 
   doRateUp(book: Book): void {
     const ratedBook = this.br.rateUp(book);

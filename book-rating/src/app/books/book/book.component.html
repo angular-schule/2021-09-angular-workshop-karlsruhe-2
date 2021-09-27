@@ -13,13 +13,13 @@
     <button
       class="btn btn-secondary"
       (click)="doRateDown()"
-      [disabled]="book.rating < 2"
+      [disabled]="!rateDownAllowed(book)"
     >-1</button>
 
     <button
       class="btn btn-primary ml-2"
       (click)="doRateUp()"
-      [disabled]="book.rating > 4"
+      [disabled]="!rateUpAllowed(book)"
     >+1</button>
   </div>
 </div>
