@@ -37,6 +37,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('book-rating app is running!');
+    expect(compiled.querySelector('h1')?.textContent)
+      .toContain('Book Rating');
   });
 });
