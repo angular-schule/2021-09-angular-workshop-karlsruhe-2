@@ -27,10 +27,15 @@ export class DashboardComponent {
     rating: 2
   }];
 
-  constructor(public br: BookRatingService) {}
+  constructor(public br: BookRatingService) {
+  }
 
   doRateUp(book: Book): void {
     const ratedBook = this.br.rateUp(book);
+    // const ratedBook = {
+    //   ...book,
+    //   rating: book.rating < 5 ? book.rating + 1 : 5
+    // };
     this.updateAndSort(ratedBook);
   }
 
