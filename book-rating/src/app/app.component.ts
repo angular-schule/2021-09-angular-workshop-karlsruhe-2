@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'br-root',
@@ -8,4 +9,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class AppComponent {
   /* istanbul ignore next */
   title = 'Book Rating';
+  title2 = environment.texte.nameOfCustomer
 }
