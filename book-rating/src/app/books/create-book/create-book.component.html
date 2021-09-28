@@ -1,0 +1,24 @@
+<form>
+  <div class="form-group">
+    <label for="isbn">ISBN</label>
+    <input type="text" class="form-control" id="isbn">
+
+    <div class="feedback-error" *ngIf="false">
+      Bitte geben Sie eine gültige ISBN ein.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" class="form-control" id="description">
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-4">
+    Create Book
+  </button>
+</form>
