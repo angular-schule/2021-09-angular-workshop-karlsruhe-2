@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
@@ -6,7 +6,9 @@ import { BookRatingService } from '../shared/book-rating.service';
 @Component({
   selector: 'br-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  // ACHTUNG: Bug sobald wir AJAX einführen
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
 
