@@ -6,5 +6,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  /* istanbul ignore next */
   title = 'Book Rating';
 }
