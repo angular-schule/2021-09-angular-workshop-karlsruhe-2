@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, mergeMap, shareReplay, switchMap } from 'rxjs/operators';
 import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
@@ -12,7 +12,8 @@ export class BookDetailsComponent {
 
   book$ = this.router.paramMap.pipe(
     map(paramMap => paramMap.get('isbn')),
-    map(isbn => this.bs.getSingleBook(isbn!))
+    switchMap(isbn => this.bs.getSingleBook(isbn!)),
+    shareReplay(1)
   );
 
   // ANTI PATTERN!
