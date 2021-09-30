@@ -13,7 +13,6 @@ export class BookDetailsComponent {
   book$ = this.router.paramMap.pipe(
     map(paramMap => paramMap.get('isbn')),
     switchMap(isbn => this.bs.getSingleBook(isbn!)),
-    shareReplay(1)
   );
 
   // ANTI PATTERN!
