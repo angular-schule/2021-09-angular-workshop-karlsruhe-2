@@ -17,8 +17,13 @@ export class MulticastComponent {
   measureValues$: Observable<number>; // später: Subject<number>;
 
   constructor(private mvs: MeasureValuesService, private es: ExerciseService) {
+
     /**************!!**************/
-    this.measureValues$ = this.mvs.getValues();
+
+    this.measureValues$ = this.mvs.getValues().pipe(
+      share()
+    )
+
     /**************!!**************/
 
   }
