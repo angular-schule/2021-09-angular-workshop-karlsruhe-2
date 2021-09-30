@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, mergeMap, shareReplay, startWith, switchMap } from 'rxjs/operators';
+import { map, mergeMap, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
@@ -10,11 +10,13 @@ import { BookStoreService } from '../shared/book-store.service';
 })
 export class BookDetailsComponent {
 
+  poorMansLoadingIndicator = false;
+
   book$ = this.router.paramMap.pipe(
     map(paramMap => paramMap.get('isbn')),
-    switchMap(isbn => this.bs.getSingleBook(isbn!).pipe(
-      startWith(null)
-    )),
+    tap(() => this.poorMansLoadingIndicator = true),
+    switchMap(isbn => this.bs.getSingleBook(isbn!)),
+    tap(() => this.poorMansLoadingIndicator = false)
   );
 
   // ANTI PATTERN!
